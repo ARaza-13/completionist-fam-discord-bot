@@ -1,3 +1,1 @@
-# template-webpack-eslint-prettier
-
-basic html, css, js template that includes Webpack startup along with ESLint and Prettier setup
+discord bot that will track/store/rank user's Xbox Gamerscore and Playstation Platinum trophies
