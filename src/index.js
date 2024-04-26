@@ -11,9 +11,4 @@ const client = new Client({
   ],
 });
 
-// listens when bot is ready and logs to the console
-client.on("ready", (c) => {
-  console.log(`✅ ${c.user.tag} is online.`);
-});
-
 client.login(process.env.TOKEN);
