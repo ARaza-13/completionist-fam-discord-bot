@@ -1,5 +1,6 @@
 require("dotenv").config(); // access the bot token from .env
 const { Client, IntentsBitField } = require("discord.js");
+const eventHandler = require("./handlers/eventHandler");
 
 // create a bot instance
 const client = new Client({
@@ -10,5 +11,7 @@ const client = new Client({
     IntentsBitField.Flags.MessageContent, // bot will be able to read messages inside the server
   ],
 });
+
+eventHandler(client);
 
 client.login(process.env.TOKEN);
