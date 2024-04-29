@@ -47,6 +47,15 @@ module.exports = async (client) => {
           );
           continue;
         }
+
+        // if the command does not exist AND if it's not set to be deleted, then register command
+        await applicationCommands.create({
+          name,
+          description,
+          options,
+        });
+
+        console.log(`👍 Registered command "${name}".`);
       }
     }
   } catch (error) {
