@@ -40,6 +40,13 @@ module.exports = async (client) => {
 
           console.log(`🔁 Edited command "${name}".`);
         }
+      } else {
+        if (localCommand.deleted) {
+          console.log(
+            `⏩ Skipping registering command "${name}" as it's set to delete.`,
+          );
+          continue;
+        }
       }
     }
   } catch (error) {
