@@ -2,11 +2,11 @@ const { ApplicationCommandOptionType } = require("discord.js");
 
 module.exports = {
   name: "register-gamertag",
-  description: "Register your Xbox Gamertag",
+  description: "Register your Xbox Gamertag.",
   options: [
     {
       name: "gamertag",
-      description: "Enter your Xbox Gamertag",
+      description: "Enter your Xbox Gamertag.",
       required: true,
       type: ApplicationCommandOptionType.String,
     },
