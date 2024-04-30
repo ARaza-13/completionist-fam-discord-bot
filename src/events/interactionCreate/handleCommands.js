@@ -1,7 +1,7 @@
 const { devs, channelId, testServer } = require("../../../config.json");
 const getLocalCommands = require("../../utils/getLocalCommands");
 
-module.exports = (client, interaction) => {
+module.exports = async (client, interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   const localCommands = getLocalCommands();
@@ -76,6 +76,9 @@ module.exports = (client, interaction) => {
         }
       }
     }
+
+    // if all checks are fine, run the command
+    await commandObject.callback(client, interaction);
   } catch (error) {
     console.log(`There was an error running this command: ${error}`);
   }
