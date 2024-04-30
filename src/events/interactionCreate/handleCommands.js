@@ -15,6 +15,17 @@ module.exports = (client, interaction) => {
 
     // check if the command exists
     if (!commandObject) return;
+
+    // check if the person running the command is a developer
+    if (!commandObject.devOnly) {
+      if (!devs.includes(interaction.member.id)) {
+        interaction.reply({
+          content: "Only developers are allowed to run this command.",
+          ephemeral: true,
+        });
+        return;
+      }
+    }
   } catch (error) {
     console.log(`There was an error running this command: ${error}`);
   }
