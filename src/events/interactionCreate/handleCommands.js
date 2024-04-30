@@ -26,6 +26,17 @@ module.exports = (client, interaction) => {
         return;
       }
     }
+
+    // check if the command is being ran in the correct server
+    if (!commandObject.testOnly) {
+      if (!(interaction.guild.id === testServer)) {
+        interaction.reply({
+          content: "This command cannot be ran here.",
+          ephemeral: true,
+        });
+        return;
+      }
+    }
   } catch (error) {
     console.log(`There was an error running this command: ${error}`);
   }
