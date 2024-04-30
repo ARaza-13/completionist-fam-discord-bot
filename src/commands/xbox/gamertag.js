@@ -17,8 +17,9 @@ module.exports = {
   // deleted: Boolean,
 
   callback: (client, interaction) => {
+    const gamertag = interaction.options.get("gamertag").value;
     interaction.reply(
-      `Your Gamertag '${interaction.options.get("gamertag")}' has been successfully registered.`,
+      `Your Gamertag **${gamertag}** has been successfully registered.`,
     );
   },
 };
