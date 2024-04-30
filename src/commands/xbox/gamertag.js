@@ -11,6 +11,7 @@ module.exports = {
       type: ApplicationCommandOptionType.String,
     },
   ],
+  channelOnly: true,
   // devOnly: Boolean,
   // testOnly: Boolean,
   // deleted: Boolean,

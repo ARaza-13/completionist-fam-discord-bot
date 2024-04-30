@@ -1,6 +1,7 @@
 module.exports = {
   name: "gamerscore",
   description: "Update your GamerScore.",
+  channelOnly: true,
   // devOnly: Boolean,
   // testOnly: Boolean,
   // options: Object[],

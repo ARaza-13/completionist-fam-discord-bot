@@ -17,7 +17,7 @@ module.exports = (client, interaction) => {
     if (!commandObject) return;
 
     // check if the person running the command is a developer
-    if (!commandObject.devOnly) {
+    if (commandObject.devOnly) {
       if (!devs.includes(interaction.member.id)) {
         interaction.reply({
           content: "Only developers are allowed to run this command.",
@@ -28,8 +28,19 @@ module.exports = (client, interaction) => {
     }
 
     // check if the command is being ran in the correct server
-    if (!commandObject.testOnly) {
+    if (commandObject.testOnly) {
       if (!(interaction.guild.id === testServer)) {
+        interaction.reply({
+          content: "This command cannot be ran here.",
+          ephemeral: true,
+        });
+        return;
+      }
+    }
+
+    // check if the command is being ran in the correct channel
+    if (commandObject.channelOnly) {
+      if (!(interaction.channel.id === channelId)) {
         interaction.reply({
           content: "This command cannot be ran here.",
           ephemeral: true,
