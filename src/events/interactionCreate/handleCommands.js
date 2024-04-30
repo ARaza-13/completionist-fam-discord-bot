@@ -48,6 +48,34 @@ module.exports = (client, interaction) => {
         return;
       }
     }
+
+    // check if the person running the command has enough permissions
+    if (commandObject.permissionsRequired?.length) {
+      for (const permission of commandObject.permissionsRequired) {
+        if (!interaction.member.permissions.has(permission)) {
+          interaction.reply({
+            content: "Not enough permissions.",
+            ephemeral: true,
+          });
+          return;
+        }
+      }
+    }
+
+    // check if bot has enough permissions to execute command
+    if (commandObject.botPermissions?.length) {
+      for (const permission of commandObject.botPermissions) {
+        const bot = interaction.guild.members.me;
+
+        if (!bot.permissions.has(permission)) {
+          interaction.reply({
+            content: "I don't have enough permissions.",
+            ephemeral: true,
+          });
+          return;
+        }
+      }
+    }
   } catch (error) {
     console.log(`There was an error running this command: ${error}`);
   }
