@@ -1,5 +1,6 @@
 require("dotenv").config(); // access the bot token from .env
 const { Client, IntentsBitField } = require("discord.js");
+const mongoose = require("mongoose");
 const eventHandler = require("./handlers/eventHandler");
 
 // create a bot instance
@@ -12,6 +13,15 @@ const client = new Client({
   ],
 });
 
-eventHandler(client);
+(async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to DB.");
+
+    eventHandler(client);
+  } catch (error) {
+    console.log(`Error: ${error}`);
+  }
+})();
 
 client.login(process.env.TOKEN);
